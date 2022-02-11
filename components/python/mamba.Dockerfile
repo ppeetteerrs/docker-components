@@ -1,17 +1,25 @@
 ENV CONDA_ENV=${USERNAME:-base}
 
-# # Include CUDA binaries in PATH
-ENV PATH=/opt/conda/bin:$PATH
+# Get mambaforge installer
+RUN wget -q "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
 
-# Clone base environment
+# Install in batch mode
+RUN bash "Mambaforge-$(uname)-$(uname -m).sh" -b
+RUN rm "Mambaforge-$(uname)-$(uname -m).sh"
 
-RUN if [ ! -z $USERNAME ]; then conda create -n $CONDA_ENV --clone base; fi
-RUN conda init --all
-RUN echo "conda activate $CONDA_ENV" >> ~/.bashrc
-RUN if [ -x "$(command -v zsh)" ]; then echo "conda activate $CONDA_ENV" >> ~/.zshrc; fi
+# Clone existing base environment(s) into user environment (e.g. NVIDIA's pytorch environments)
+RUN if [ ! -z $(which conda) ]; then conda create -p ~/mambaforge/envs/$(whoami) --clone base -y; else ~/mambaforge/bin/mamba create -n $(whoami) --clone base -y; fi
 
-RUN conda install -y mamba -n $CONDA_ENV -c conda-forge
-ENV PATH=/home/$USERNAME/.conda/envs/$CONDA_ENV/bin:$PATH
+# Init shells and add to docker path
+RUN ~/mambaforge/bin/mamba init --all
+ENV PATH=/home/$USERNAME/mambaforge/bin:$PATH
 
+# Automatically activate user environment
+RUN echo "conda activate $(whoami)" >> ~/.bashrc
+RUN if [ -x "$(command -v zsh)" ]; then echo "conda activate $(whoami)" >> ~/.zshrc; fi
 
+# Disable mamba logo
+RUN conda env config vars set MAMBA_NO_BANNER=1
 
+# Disable conda prompt for starship
+RUN if [ -x "$(command -v starship)" ]; then conda config --set changeps1 False; fi

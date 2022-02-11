@@ -32,7 +32,7 @@ if __name__ == "__main__":
     push: bool = args.push
 
     cwd = Path(__file__).parent.resolve()
-    input_path: Path = Path(args.recipe)
+    input_path: Path = Path(f"recipes/{args.recipe}.Dockerfile")
     output_path: Path = Path(cwd) / f"output/{input_path.stem}.Dockerfile"
 
     components_folder = str(cwd / "components")
