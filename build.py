@@ -64,10 +64,16 @@ if __name__ == "__main__":
     open(output_path, "w").write("\n".join(output_lines))
 
     if tag is not None:
-        system(f"docker build -t {tag} -f {output_path} {cwd}")
+        code = system(f"docker build -t {tag} -f {output_path} {cwd}")
 
-    if push:
-        system(f"docker push {tag}")
+        if code == 0:
 
-    if start:
-        system(f"docker run -it {tag}")
+            if push:
+                system(f"docker push {tag}")
+
+            if start:
+                system(f"docker run -it {tag}")
+
+        else:
+
+            exit(code)
