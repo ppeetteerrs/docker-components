@@ -1,0 +1,26 @@
+[username]
+disabled = true
+
+[hostname]
+disabled = true
+
+[container]
+disabled = true
+
+[conda]
+format = "\\([$environment]($style)\\) "
+ignore_base = false
+
+[git_status]
+ahead = "🔺×$count "
+behind = "�×$count "
+conflicted = "⚔️ "
+deleted = "�×$count "
+diverged = "🔀 🔺×${ahead_count} 🔻×${behind_count} "
+format = "$all_status$ahead_behind"
+modified = "📝×$count "
+renamed = ""
+staged = "🔒×$count "
+stashed = "� "
+style = "bright-white"
+untracked = "🔓×$count "
