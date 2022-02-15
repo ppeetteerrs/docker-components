@@ -42,9 +42,11 @@ alias i="sudo apt-get install -y"
 alias update="sudo apt-get update -y && sudo apt-get upgrade -y"
 
 # Mamba
-alias mi="mamba install -y -c conda-forge"
+alias mi="mamba install -y"
 alias ma="mamba activate"
 # Tmux
 alias tm="tmux new -As"
 alias tl="tmux ls"
 alias tk="tmux kill-session -t"
+
+alias duh="du -h --max-depth=1 ."

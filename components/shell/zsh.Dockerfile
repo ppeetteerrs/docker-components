@@ -4,4 +4,5 @@ RUN sudo apt-get install -y zsh && \
 	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions && \
 	echo "export HISTSIZE=1000000" >> ~/.zshrc && \
 	echo "export SAVEHIST=1000000" >> ~/.zshrc && \
-	echo "setopt EXTENDED_HISTORY" >> ~/.zshrc
+	echo "setopt EXTENDED_HISTORY" >> ~/.zshrc && \
+	sed -i 's/plugins=(git)/plugins=(zsh-syntax-highlighting zsh-autosuggestions)/g' ~/.zshrc
