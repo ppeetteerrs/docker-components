@@ -7,8 +7,8 @@ IMPORT shell/starship
 IMPORT shell/alias
 IMPORT python/mamba
 IMPORT python/common
-IMPORT python/opencv
 IMPORT python/pytorch
+IMPORT python/opencv
 
 RUN pip install deepdrr==1.1.0a4
 RUN mamba install -y pycuda python-dotenv python-lmdb

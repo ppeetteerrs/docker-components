@@ -28,7 +28,7 @@ alias gc="git commit -m"
 alias gam="git commit --amend --no-edit"
 alias gac="git add -A && git commit -m"
 alias grm="git rm -r --cached ."
-alias gp="git push --tags"
+alias gp="git push"
 alias gir="git rebase -i HEAD~15"
 
 # List
