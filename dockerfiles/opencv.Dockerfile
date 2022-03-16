@@ -38,7 +38,9 @@ RUN wget -q -O - https://github.com/opencv/opencv/archive/$OPENCV_VERSION.tar.gz
     -D BUILD_EXAMPLES=OFF .. && \
 	sudo make -j$(nproc) install && \
 	sudo ldconfig && \
-    sudo rm -rf ~/opencv-$OPENCV_VERSION ~/opencv_contrib && \
+	cd ~ && \
+	sudo rm -rf ~/opencv-$OPENCV_VERSION ~/opencv_contrib && \
+	sudo apt-get update -y && \
     sudo apt-get install -y libgl1 libxrender1
 
 CMD "zsh"
