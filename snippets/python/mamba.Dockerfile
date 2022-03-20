@@ -11,7 +11,7 @@ RUN if [ ! -z $(which conda) ]; \
 	fi
 
 ## Automatically activate user environment, disable logo and disable conda prompt for starship
-ENV PATH=/home/$USERNAME/mambaforge/bin:$PATH
+ENV PATH=/home/user/mambaforge/bin:$PATH
 RUN mamba init --all && \
 	conda env config vars set MAMBA_NO_BANNER=1 && \
 	conda config --set changeps1 False
