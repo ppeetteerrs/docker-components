@@ -1,5 +1,8 @@
 FROM nvcr.io/nvidia/pytorch:21.12-py3
 
+LABEL org.opencontainers.image.source https://github.com/ppeetteerrs/docker-component
+LABEL org.opencontainers.image.description "Ubuntu 20.04 + PyTorch + CUDA Dev Kit"
+
 # Base
 ## Settings
 WORKDIR /root

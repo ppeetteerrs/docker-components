@@ -1,11 +1,16 @@
-FROM ppeetteerrs/python:latest
+ARG PYTHON_VERSION=3.9
 
-# OpenCV
+FROM ghcr.io/ppeetteerrs/python:$PYTHON_VERSION
+
+LABEL org.opencontainers.image.source https://github.com/ppeetteerrs/docker-components
+LABEL org.opencontainers.image.description "Ubuntu 20.04 + Mambaforge Python + OpenCV (No CUDA / CUDNN)"
+
 ARG OPENCV_VERSION=4.5.5
 ARG CUDA_ARCH=8.6
 ARG NUMPY_VERSION=1.21.5
 
-RUN wget -q -O - https://github.com/opencv/opencv/archive/$OPENCV_VERSION.tar.gz | tar -xzf - && \
+RUN mamba install -y numpy=$NUMPY_VERSION && \
+    wget -q -O - https://github.com/opencv/opencv/archive/$OPENCV_VERSION.tar.gz | tar -xzf - && \
 	git clone https://github.com/opencv/opencv_contrib.git && \
 	mkdir -p ~/opencv-$OPENCV_VERSION/build && \
 	cd ~/opencv-$OPENCV_VERSION/build && \

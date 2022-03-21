@@ -1,5 +1,0 @@
-docker build -t ppeetteerrs/python -f dockerfiles/python.Dockerfile . && docker push ppeetteerrs/python
-docker build -t ppeetteerrs/opencv -f dockerfiles/opencv.Dockerfile . && docker push ppeetteerrs/opencv
-docker build -t ppeetteerrs/pytorch -f dockerfiles/pytorch.Dockerfile . && docker push ppeetteerrs/pytorch
-docker build -t ppeetteerrs/fyp:local -f dockerfiles/fyp.Dockerfile . && docker push ppeetteerrs/fyp:local
-docker build -t ppeetteerrs/fyp:server -f dockerfiles/fyp.Dockerfile --build-arg USER_UID=1002 . && docker push ppeetteerrs/fyp:server

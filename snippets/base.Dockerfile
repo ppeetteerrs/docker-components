@@ -1,4 +1,7 @@
 # Base
+LABEL org.opencontainers.image.source https://github.com/ppeetteerrs/docker-component
+LABEL org.opencontainers.image.description ""
+
 ## Settings
 WORKDIR /root
 SHELL ["/bin/bash", "-c"]

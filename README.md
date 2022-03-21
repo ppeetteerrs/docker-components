@@ -1,10 +1,30 @@
 # Docker Components
-> Helper Scripts and Files to Include Nice Features in Any Dockerfile
+Snippets, resources and Dockerfiles for building my personal Docker Images.
 
-## Usage
-1. Write a recipe in `/recipes`. It is like a normal `Dockerfile`.
-2. Use `IMPORT <component_name>` in your recipe to import a component. Resource files will be copied from `resources/` to `/resources/` in the image.
-3. Run `python build.py` to output a `Dockerfile` in the `output/` folder. Other options include:
-   - `-t tag`: Build the docker image with tag `tag`.
-   - `-p`: Push docker image to Docker Hub after the build.
-   - `-s`: Start the docker container after the build.
+# Folder Structure
+```txt
+📦docker-components
+ ┣ 📂dockerfiles              --- Dockerfiles to build images
+ ┃ ┣ 📜fyp.Dockerfile
+ ┃ ┣ 📜opencv.Dockerfile
+ ┃ ┣ 📜python.Dockerfile
+ ┃ ┣ 📜pytorch.Dockerfile
+ ┃ ┣ 📜rust.Dockerfile
+ ┃ ┗ 📜ubuntu.Dockerfile
+ ┣ 📂resources                --- Resource files to copy into images
+ ┃ ┣ 📜aliases.bashrc         --- CLI aliases
+ ┃ ┣ 📜starship.sh            --- Install Starship
+ ┃ ┗ 📜starship.toml          --- Starship config
+ ┣ 📂snippets                 --- Dockerfile snippets to achieve different functions
+ ┃ ┣ 📂python
+ ┃ ┃ ┣ 📜mamba.Dockerfile
+ ┃ ┃ ┗ 📜packages.Dockerfile
+ ┃ ┣ 📂rust
+ ┃ ┃ ┗ 📜rust.Dockerfile
+ ┃ ┣ 📜add_user.Dockerfile
+ ┃ ┣ 📜base.Dockerfile
+ ┃ ┗ 📜shell.Dockerfile
+ ┣ 📜.gitignore
+ ┣ 📜README.md
+ ┗ 📜build.sh                 --- List of commands to build images & push to ghcr.io 
+```
